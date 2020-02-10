@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Patapat Clone</title>
+	<link rel="stylesheet" type="text/css" href="circles.css">
+	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.js"></script>
+	<script type="text/paperscript" canvas="myCanvas">
+
+		var sound1 = new Howl({
+  		src: ['sounds/bubbles.mp3']
+		});
+
+		var sound2 = new Howl({
+  		src: ['sounds/clay.mp3']
+		});
+
+
+var Circles=[];
+	function onKeyDown(event) {
+
+	if(event.key==='a'){
+	sound1.play();
+	
+	}
+	if(event.key==='s'){
+	sound2.play();
+}
+	var maxPoint=new Point(view.size.width, view.size.height);
+	var random=Point.random();
+	var point=maxPoint*random;
+	// When a key is pressed, set the content of the text item:
+
+	var newCircle=new Path.Circle(point,200);
+	newCircle.fillColor="orange";
+	Circles.push(newCircle);
+
+}
+
+	function onFrame(event){
+	for(var i=0;i<Circles.length;i++){
+	console.log(Circles[i]);
+	Circles[i].fillColor.hue += 1;
+	Circles[i].scale(0.9);
+}
+	
+}
+
+
+ 
+	
+	
+
+</script>
+</head>
+<body>
+
+<canvas id="myCanvas" resize></canvas>
+
+</body>
+</html>
